@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: saas_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: saas_password123
+      POSTGRES_DB: freelance_milestone_saas_db
+    ports:
+      - "5435:5432" # 5432 çakışmasını önlemek için 5435 yaptık
+    volumes:
+      - saas_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  saas_postgres_data:
